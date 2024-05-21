@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StopWatch with setInterval</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      button {
+        margin: 10px;
+      }
+
+      #timer {
+        font-size: 100px;
+      }
+
+      h1 {
+        font-size: 50px;
+      }
+
+      p {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>StopWatch</h1>
+        <p id="timer">0</p>
+        <button onclick="start()" id="start">Start</button>
+        <button onclick="stop()" id="stop">Stop</button>
+        <button onclick="reset()" id="reset">Reset</button>
+      </section>
+    </main>
+    <script>
+      let count = 0;
+      let interval;
+      function start() {
+        interval = setInterval(() => {
+          count++;
+          document.getElementById("timer").innerHTML = count;
+          console.log(count);
+        }, 1000);
+      }
+      function stop() {
+        console.log(interval);
+        clearInterval(interval);
+        interval = null;
+      }
+
+      function reset() {
+        clearInterval(interval);
+        count = 0;
+        document.getElementById("timer").innerHTML = count;
+        interval = null;
+      }
+    </script>
+  </body>
+</html>
